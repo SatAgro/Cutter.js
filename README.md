@@ -27,12 +27,18 @@ Cutter cuts the content to the number of requested words and if needed puts a li
 
 [Examples](https://github.com/tcorral/Cutter.js/examples_and_documents/index.html) to see for yourself!
 
+## Instalation
+
+You can install cutter.js using Bower by typing:
+
+  bower install cutter.js
+
 ## Usage
 
 ### Before using it:
 Insert in your code:
 
-	<script type="text/javascript" src="/path/to/your/js/libs/Cutter.js"></script>
+	<script type="text/javascript" src="/path/to/your/bower/dist/cutter.js"></script>
 
 ### Simple execution:
 
