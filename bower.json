@@ -1,0 +1,27 @@
+{
+  "name": "cutter.js",
+  "homepage": "https://github.com/SatAgro/Cutter.js",
+  "authors": [
+    "Tomás Corral Casas <amischol@gmail.com>",
+    "Krzysztof Stopa <stopa.krzysztof.k@gmail.com>"
+  ],
+  "description": "Library that enables to truncate HTML code to limit its length by number of words without losing markup.",
+  "main": "./dist/cutter.js",
+  "keywords": [
+    "JS",
+    "cutter",
+    "truncate",
+    "markup"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SatAgro/Cutter.js.git"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "tests"
+  ]
+}
