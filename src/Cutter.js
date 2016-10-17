@@ -5,7 +5,7 @@
     /**
      * Cutter is a class that allows HTML code to cut a number of words contained in the nodes, keeping intact the HTML markup.
      * @author Tomas Corral Casas
-     * @version 1.0
+     * @version 1.0.2
      * @class Cutter
      * @constructor
      * @type Object
@@ -67,6 +67,13 @@
          * @type Object
          */
         this.oViewMore = null;
+        /**
+         * Elementa tath seperates view more text from the text itself.
+         * @member Cutter.prototype
+         * @author Krzysztof Stopa
+         * @type String
+         */
+        this.oViewMoreSeparator = "br";
         /**
          * oSerialized is the JSON object where Cutter serializes all the DOM objects inside the oApplyTo Dom element
          * @member Cutter.prototype
@@ -191,6 +198,21 @@
         }
         this.nWords = nWords - 1;
         return this;
+    };
+    /**
+     * setWords is the method used to set the DOM element that separates view more text from the text itself.
+     * @member Cutter.prototype
+     * @author Krzysztof Stopa
+     * @param  {String} separator DOM element tag
+     * @return the instance of the Cutter
+     * @type Object
+     */
+    Cutter.prototype.setViewMoreSeparator = function(separator) {
+      if (!separator) {
+          return this;
+      }
+      this.oViewMoreSeparator = separator;
+      return this;
     };
     /**
      * trim is an utilities method used to keep out all the spaces before or after the sentence
@@ -465,7 +487,6 @@
             } else {
                 e.returnValue = false;
             }
-            
             self.showAll();
             return false;
         });
@@ -510,7 +531,7 @@
             } else {
                 oElement.appendChild(doc.createTextNode("..."));
             }
-            oElement.appendChild(doc.createElement("br"));
+            oElement.appendChild(doc.createElement(this.oViewMoreSeparator));
             oElement.appendChild(this.oViewMore);
             this.setBehaviour();
         }
@@ -526,6 +547,9 @@
             }
             if (typeof configuration['class'] !== "undefined") {
                 oCutter.setClasses(configuration['class']);
+            }
+            if (typeof configuration.viewMoreSeparator !== "undefined") {
+                oCutter.setViewMoreSeparator(configuration['viewMoreSeparator']);
             }
         }
 

@@ -57,18 +57,50 @@ Insert in your code:
   >  **configuration**: This object contains both the text that will be displayed in the "view more" link and its style.
 
   >>    configuration.viewMoreText: The text that will be displayed in the "view more" link. The default is "View more"
+  
+  >>    configuration.viewMoreSeparator: The DOM element tag that separates the text from the text itself
 
   >>    configuration.class: The class that will be applied to the "View more" link. The default is "more"
 
+
 *Tip: oTarget Could be the same oApplyTo element if we want to replace the full content with the cut content*
 
-## Example
+## Usage
 
-cutElement = document.getElementById("test");
-Cutter.run(cutElement, cutElement, 30, {viewMoreText:"Expand", class:"expandLink"});
+```javascript
+    cutElement = document.getElementById("test");
+    Cutter.run(cutElement, cutElement, 30, {viewMoreText:"Expand", class:"expandLink", viewMoreSeparator:"span"});
+```
 
 *On the example above, the element with id "test" will display a maximum of 30 words and a link entitled "Expand". The "expandLink" class will be applied to this link. The remaining words that were previously truncated will show up in the element when the link is clicked.
 
+## Example
+
+```html
+<html>
+<head>
+    <script type="text/javascript" src="../dist/cutter.min.js"></script>
+    <style>
+        #txt-test i{
+            margin-left:20px;
+        }    
+        
+        .expandLink {
+            cursor: pointer;
+            text-decoration:underline;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+  <p id="txt-test" onclick="test();">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt mattis urna, vitae rhoncus arcu eleifend at. Suspendisse quis est dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam finibus finibus tellus eu convallis. Suspendisse potenti. Pellentesque mollis interdum nulla at cursus. Aliquam nulla dolor, laoreet sed tincidunt ut, ultricies non metus.</p>
+</body>
+<script>
+    cutElement = document.getElementById("txt-test");
+    Cutter.run(cutElement, cutElement, 30, {viewMoreText:"Expand", class:"expandLink", viewMoreSeparator:"i"}});
+</script>
+</html>
+```
 ## License
 
 Cutter.js is licensed under the MIT license.
